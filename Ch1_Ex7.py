@@ -20,7 +20,7 @@ numeric_transformer = Pipeline(steps=[('imputer', SimpleImputer(strategy='mean')
 
 # Define processing for categorial columns
 categorical_features = ['Category']
-categorical_transformer = Pipeline(steps=[('imputer', SimpleImputer(strategy='constant', fill_value='missing'))])
+categorical_transformer = Pipeline(steps=[('imputer', SimpleImputer(strategy='constant', fill_value='missing')), ('onehot', OneHotEncoder(handle_unknown='ignore'))])
 
 # Combine preprocessing steps 
 preprocessor = ColumnTransformer(transformers=[('num', numeric_transformer, numeric_features), ('cat', categorical_transformer, categorical_features)])
@@ -30,7 +30,7 @@ pipeline = Pipeline(steps=[('preprocessor', preprocessor)])
 transformed_data = pipeline.fit_transform(df)
 
 # Convert to DataFrame for better visualization
-feature_names = (numeric_features + pipeline.named_steps['preprocessor'].named_transformers_['cat'].named_steps['onehot'].get_feature_names(categorical_features).tolist())
+feature_names = (numeric_features + pipeline.named_steps['preprocessor'].named_transformers_['cat'].named_steps['onehot'].get_feature_names_out(categorical_features).tolist())
 
 
 transformed_df = pd.DataFrame(transformed_data, columns=feature_names)
