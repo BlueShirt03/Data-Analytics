@@ -16,3 +16,19 @@ df = pd.DataFrame(data)
 df['OrderDate'] = pd.to_datetime(df['OrderDate'])
 
 # Identify and filter out orders with negative or unusually high amounts
+valid_orders = df[(df['TotalAmount']> 0) & (df['TotalAmount'] < 100000)]
+
+#Identify and filter out oders with invalid status
+invalid_status = df[~df['Status'].isin(['Completed', 'Pending', 'Shipped'])]
+
+
+print("Valid Orders:")
+print(valid_orders)
+print("\nOrders with Invalid Status:")  
+print(invalid_status)
+
+# Clean the data be remoiving invalid entries and resetting the index 
+cleaned_df = df[(df['TotalAmount']> 0) & (df['TotalAmount'] < 100000) & (df['Status'].isin(['Completed', 'Pending', 'Shipped']))].reset_index(drop=True)
+
+print("\nCleaned DataFrame:")
+print(cleaned_df)  
