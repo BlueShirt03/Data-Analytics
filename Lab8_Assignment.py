@@ -6,10 +6,11 @@ data = {'Name': ['Alice', 'Bob', 'Charlie', 'Diana'],
 df = pd.DataFrame(data)
 
 out_of_range = df[(df['Age'] < 0) | (df['Age'] > 120)]
+print("Out-of-range values:")
 print(out_of_range)
 
 df = df[(df['Age'] >= 0) & (df['Age'] <= 120)]
 
 
-print("\\nDataset after removing out-of-range values:")
+print("\nDataset after removing out-of-range values:")
 print(df)
