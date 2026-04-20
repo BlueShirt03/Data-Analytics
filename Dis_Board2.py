@@ -11,7 +11,7 @@ df = pd.DataFrame({
 })
 
 
-# Original version with Matplotlib
+
 plt.figure(figsize=(7, 5))
 for group, subset in df.groupby("Group"):
     plt.scatter(subset["Hours_Studied"], subset["Exam_Score"], label=group, s=70)
@@ -23,7 +23,34 @@ plt.legend()
 plt.tight_layout()
 plt.show()
 
-# Original version with Seaborn
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 plt.figure(figsize=(7, 5))
 sns.scatterplot(data=df, x="Hours_Studied", y="Exam_Score", hue="Group", s=90)
 
@@ -33,7 +60,46 @@ plt.ylabel("Exam Score")
 plt.tight_layout()
 plt.show()
 
-# Improved version with Matplotlib
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 plt.figure(figsize=(7, 5))
 for group, subset in df.groupby("Group"):
     plt.scatter(subset["Hours_Studied"], subset["Exam_Score"], label=group, s=90, alpha=0.9)
@@ -52,7 +118,42 @@ plt.tight_layout()
 plt.show()
 
 
-#Improved version with Seaborn
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 sns.set_theme(style="whitegrid")
 
 plt.figure(figsize=(7, 5))
@@ -64,6 +165,41 @@ plt.ylabel("Exam Score")
 sns.despine()
 plt.tight_layout()
 plt.show()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 p = (
